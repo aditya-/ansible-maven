@@ -22,7 +22,7 @@
 
 - name: change the folder name
   file:
-    src: '{{ maven_home_parent_directory }}/{{ maven_file_name }}'
+    src: '{{ maven_home_parent_directory }}/apache-maven-{{ maven_version }}'
     dest: '{{ maven_home_parent_directory }}/maven'
     state: link
     
