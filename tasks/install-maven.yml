@@ -21,8 +21,11 @@
   when: not maven_installed.stat.exists
 
 - name: change the folder name
-  shell: "mv {{ maven_home_parent_directory }}/{{ maven_file_name }} {{ maven_home_parent_directory }}/maven"
-
+  file:
+    source: '{{ maven_home_parent_directory }}/{{ maven_file_name }}'
+    path: '{{ maven_home_parent_directory }}/maven'
+    state: hard
+    
 - name: Remove old path configuration
   file:
     path: /etc/profile.d/maven.sh
@@ -35,7 +38,7 @@
     create: yes
     state: present
   with_items:
-    - { line: 'M2_HOME={{ maven_home_parent_directory }}/maven' }
+    - { line: 'M2_HOME={{ maven_home_parent_directory }}/apache-maven-{{ maven_version }}' }
     - { line: 'PATH=$PATH:$M2_HOME/bin' }
 
 - name: Cleaning Up
