@@ -2,7 +2,7 @@
 # tasks file for apache-maven
 - name: Checking if Maven is already installed
   stat: 
-    path: '{{ maven_home_parent_directory }}/apache-maven-{{ maven_version }}'
+    path: '{{ maven_home_parent_directory }}/maven'
   register: maven_installed
 
 - name: Downloading Maven Binaries
