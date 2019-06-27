@@ -22,8 +22,8 @@
 
 - name: change the folder name
   file:
-    source: '{{ maven_home_parent_directory }}/{{ maven_file_name }}'
-    path: '{{ maven_home_parent_directory }}/maven'
+    src: '{{ maven_home_parent_directory }}/{{ maven_file_name }}'
+    dest: '{{ maven_home_parent_directory }}/maven'
     state: link
     
 - name: Remove old path configuration
